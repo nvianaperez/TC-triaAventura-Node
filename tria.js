@@ -26,18 +26,23 @@ let index = 0;
 while (index >= 0) {
   let pagina = historia[index];
   console.log(pagina.text);
+
+  pregunta(pagina);
+
+  if (pagina.fi) {
+    index = -1;
+  }
+}
+
+function pregunta(pagina) {
   let resposta = "";
   resposta = readlineSync.question(`Si o no? [s/n]`).toLowerCase();
 
   if (resposta === "s") {
     index = pagina.s;
-    if (pagina.fi) {
-      index = -1;
-    }
+    return index;
   } else {
     index = pagina.n;
-    if (pagina.fi) {
-      index = -1;
-    }
+    return index;
   }
 }
